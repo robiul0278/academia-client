@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "courseName": "Mathematics",
+    "instructor": "John Smith",
+    "price": 99.99,
+    "image": "https://i.ibb.co/z5J3gcT/math.jpg",
+    "rating": 4.8
+  },
+  {
+    "id": 2,
+    "courseName": "Physics",
+    "instructor": "Emily Johnson",
+    "price": 149.99,
+    "image": "https://i.ibb.co/t8NtKCT/physics.jpg",
+    "rating": 4.6
+  },
+  {
+    "id": 3,
+    "courseName": "Biology",
+    "instructor": "David Miller",
+    "price": 79.99,
+    "image": "https://i.ibb.co/7C30yfv/biology.jpg",
+    "rating": 4.9
+  },
+  {
+    "id": 4,
+    "courseName": "Chemistry",
+    "instructor": "Sarah Thompson",
+    "price": 119.99,
+    "image": "https://i.ibb.co/PMyVmvV/chemistry.png",
+    "rating": 4.7
+  },
+  {
+    "id": 5,
+    "courseName": "Bangla",
+    "instructor": "Michael Davis",
+    "price": 89.99,
+    "image": "https://i.ibb.co/zVtSrhd/bangla.png",
+    "rating": 4.5
+  },
+  {
+    "id": 6,
+    "courseName": "ICT",
+    "instructor": "Jessica Lee",
+    "price": 69.99,
+    "image": "https://i.ibb.co/sHVgJB0/ict.jpg",
+    "rating": 4.7
+  }
+]
