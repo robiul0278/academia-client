@@ -3,7 +3,7 @@ const CourseCard = ({ course }) => {
     const { courseName, instructor, price, image, rating } = course;
     return (
         <>
-            <div className="card w-full bg-base-100 border">
+            <div className="card w-full bg-base-100 shadow-sm">
                 <figure className="px-10 pt-10"><img src={image} alt="course image" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">
