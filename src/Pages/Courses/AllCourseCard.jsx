@@ -7,8 +7,9 @@ const AllCourseCard = ({ course }) => {
     const {user} = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
-    const [, refetch] = useCart();
+    const [cart , refetch] = useCart();
     const { courseName, instructor, price, image, availableSeats, _id } = course;
+    console.log(cart)
 
     const handleAddToCart = item => {
         console.log(item);

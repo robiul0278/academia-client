@@ -34,7 +34,7 @@ const Navbar = () => {
       {user ? (
         <>
           <li>
-            <Link>
+            <Link to='dashboard/mycart'>
             <FaShoppingCart></FaShoppingCart>
             <div className="badge badge-secondary">+{cart?.length || 0}</div>
             </Link>
@@ -46,7 +46,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar max-w-screen-2xl mx-auto fixed py-8 z-10 bg-opacity-20 text-white bg-emerald-950">
+    <div className="navbar max-w-screen-2xl mx-auto fixed py-5 z-10 bg-opacity-20 text-white bg-emerald-950">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

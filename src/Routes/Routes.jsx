@@ -7,6 +7,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Instructors from "../Pages/Instructors/Instructors";
 import Courses from "../Pages/Courses/Courses";
 import Dashboard from "../Layout/Dashboard";
+import MyCart from "../Pages/UserDashboard/MyCart";
 
 const router = createBrowserRouter([
     {
@@ -38,7 +39,13 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: 'mycart',
+                element: <MyCart></MyCart>
+            }
+        ]
     }
 ]);
 
