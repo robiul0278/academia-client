@@ -1,13 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import { FaCartPlus, FaHome } from "react-icons/fa";
 import {
-  // MdPayments,
-  // MdDateRange,
-  // MdReviews,
-  // MdBookmarks,
-  // MdMenu,
-  // MdShoppingBag,
-  // MdContactMail,
+
   MdOutlineFoodBank,
   MdMenuOpen,
   MdBook,
@@ -16,11 +10,14 @@ import {
 } from "react-icons/md";
 import Navbar from "../Shared/Navbar/Navbar";
 import Footer from "../Shared/Footer/Footer";
-import useAdmin from "../Hooks/useAdmin";
+import useAuth from "../Hooks/useAuth";
+// import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
+  const { user } = useAuth();
 
-  const [isAdmin] = useAdmin();
+  // const [isAdmin] = useAdmin();
+  const isAdmin = true;
 
   return (
     <div>
@@ -33,11 +30,25 @@ const Dashboard = () => {
           <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
         </div>
-        <div className="drawer-side w-80 bg-yellow-500 text-base-content">
+        <div className="drawer-side bg-teal-950 text-base-content bg-opacity-20  ">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu font-semibold p-4  leading-loose">
+          <ul className="menu w-80 font-semibold p-4  leading-loose text-white">
             <div className="p-5 font-bold font-serif">
               <h1 className="text-3xl">ACADEMIA</h1>
+            </div>
+            <div>
+              <div className="stat bg-white rounded">
+                <div className="stat-figure text-secondary">
+                  <div className="avatar online">
+                    <div className="w-16 rounded-full">
+                      <img src={user?.photoURL} />
+                    </div>
+                  </div>
+                </div>
+                <div className="stat-value text-black text-xl">{user?.displayName}</div>
+                <div className="stat-title">Profile</div>
+                <div className="stat-desc text-secondary">{user?.email}</div>
+              </div>
             </div>
 
             {
@@ -47,21 +58,21 @@ const Dashboard = () => {
                     <Link to="/">
                       {" "}
                       <FaHome />
-                      ADMIN HOME
+                      HOME
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dashboard/additem">
+                    <Link to="/dashboard/addcourse">
                       {" "}
                       <MdOutlineFoodBank />
-                      ADD ITEMS
+                      Add a Course
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dashboard/manageitems">
+                    <Link to="/dashboard/mycourses">
                       {" "}
                       <MdMenuOpen />
-                      MANAGE ITEMS
+                      My Courses
                     </Link>
                   </li>
                   <li>
@@ -72,13 +83,12 @@ const Dashboard = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dashboard/allusers">
+                    <Link to="/dashboard/manageusers">
                       {" "}
                       <MdManageAccounts />
-                      ALL USERS
+                      Manage USERS
                     </Link>
                   </li>
-                  <hr className="border m-5" />
                   {/* OR ============ */}
                 </> :
                 <>
@@ -86,7 +96,7 @@ const Dashboard = () => {
                     <Link to="/">
                       {" "}
                       <FaHome />
-                      USER HOME
+                      HOME
                     </Link>
                   </li>
                   <li>

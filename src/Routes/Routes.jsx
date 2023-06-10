@@ -8,7 +8,10 @@ import Instructors from "../Pages/Instructors/Instructors";
 import Courses from "../Pages/Courses/Courses";
 import Dashboard from "../Layout/Dashboard";
 import MyCart from "../Pages/UserDashboard/MyCart";
-import PrivateRoute from "./PrivateRoute";
+import MyCourses from "../Pages/InstructorDashboard/MyCourses";
+import AddCourse from "../Pages/InstructorDashboard/AddCourse";
+import ManageUsers from "../Pages/AdminDashboard/ManageUsers";
+import ManageCourse from "../Pages/AdminDashboard/ManageCourse";
 
 const router = createBrowserRouter([
     {
@@ -45,6 +48,26 @@ const router = createBrowserRouter([
             {
                 path: 'mycart',
                 element: <MyCart></MyCart>
+            },
+
+            // instrtuctor dashboard 
+            {
+                path: 'addcourse',
+                element: <AddCourse></AddCourse>
+            },
+            {
+                path: 'mycourse',
+                element: <MyCourses></MyCourses>
+            },
+
+            // admin dashboard 
+            {
+                path: 'managecourse',
+                element: <ManageCourse></ManageCourse>
+            },
+            {
+                path: 'manageusers',
+                element: <ManageUsers></ManageUsers>
             }
         ]
     }
