@@ -15,46 +15,47 @@ const Register = () => {
 
     const onSubmit = data => {
         createUser(data.email, data.password)
-            .then(result => {
-                setError("");
-                const loggedUser = result.user;
-                console.log(loggedUser);
+        .then(result => {
+            setError("");
+            const loggedUser = result.user;
+            console.log(loggedUser);
 
-                updateUserProfile(data.name, data.photoURL)
-                    .then(() => {
-                        const saveUser = { name: data.name, email: data.email }
-                        fetch('http://localhost:5000/users', {
-                            method: 'POST',
-                            headers: {
-                                'content-type': 'application/json'
-                            },
-                            body: JSON.stringify(saveUser)
-                        })
-                            .then(res => res.json())
-                            .then(data => {
-                                if (data.insertedId) {
-                                    reset();
-                                    Swal.fire({
-                                        position: 'top-end',
-                                        icon: 'success',
-                                        title: 'User created successfully.',
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    });
-                                    navigate('/');
-                                }
-                            })
+            updateUserProfile(data.name, data.photoURL)
+                .then(() => {
+                    const saveUser = { name: data.name, email: data.email, image: data.photoURL };
+                    fetch('http://localhost:5000/users', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(saveUser)
                     })
-                    .catch((error) => {
-                        const errorMessage = error.message;
-                        console.log(errorMessage);
-                      });
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-                setError(errorMessage);
-                console.log(errorMessage);
-              });
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data)
+                            if (data.insertedId) {
+                                reset();
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'User created successfully.',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                navigate('/');
+                            }
+                        })
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    console.log(errorMessage);
+                    });
+        })
+        .catch((error) => {
+            const errorMessage = error.message;
+            setError(errorMessage);
+            console.log(errorMessage);
+            });
     };
 
 
@@ -104,7 +105,6 @@ const Register = () => {
                                 {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
                                 {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
                                 {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case and one special character.</p>}
-                            <h4 className="text-yellow-400">{error}</h4>
                             </div>
                             <div className="form-control">
                                 <label className="label">
