@@ -21,7 +21,7 @@ const Dashboard = () => {
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
   // const isAdmin = true;
-console.log(isAdmin);
+  console.log(isAdmin);
   return (
     <div>
       <Navbar></Navbar>
@@ -55,69 +55,68 @@ console.log(isAdmin);
             </div>
 
             {
-              isInstructor ?
-                <>
-                  <li>
-                    <Link to="/">
-                      {" "}
-                      <FaHome />
-                      HOME
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/dashboard/addcourse">
-                      {" "}
-                      <MdOutlineFoodBank />
-                      Add a Course
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/dashboard/mycourses">
-                      {" "}
-                      <MdMenuOpen />
-                      My Courses
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="">
-                      {" "}
-                      <MdBook />
-                      MANAGE BOOKING
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/dashboard/manageusers">
-                      {" "}
-                      <MdManageAccounts />
-                      Manage USERS
-                    </Link>
-                  </li>
-                  {/* OR ============ */}
-                </> :
-                <>
-                  <li>
-                    <Link to="/">
-                      {" "}
-                      <FaHome />
-                      HOME
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/dashboard/mycart">
-                      {" "}
-                      <FaCartPlus />
-                      My Selected Classes
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="">
-                      {" "}
-                      <MdReviews />
-                      My Enrolled Classes
-                    </Link>
-                  </li>
-                </>
+              isAdmin ? <>
+                <li>
+                  <Link to="">
+                    {" "}
+                    <MdBook />
+                    MANAGE BOOKING
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/manageusers">
+                    {" "}
+                    <MdManageAccounts />
+                    Manage USERS
+                  </Link>
+                </li>
+              </> : isInstructor ? <>
+                <li>
+                  <Link to="/">
+                    {" "}
+                    <FaHome />
+                    HOME
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/addcourse">
+                    {" "}
+                    <MdOutlineFoodBank />
+                    Add a Course
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/mycourses">
+                    {" "}
+                    <MdMenuOpen />
+                    My Courses
+                  </Link>
+                </li>
+              </> : <>
+                <li>
+                  <Link to="/">
+                    {" "}
+                    <FaHome />
+                    HOME
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/mycart">
+                    {" "}
+                    <FaCartPlus />
+                    My Selected Classes
+                  </Link>
+                </li>
+                <li>
+                  <Link to="">
+                    {" "}
+                    <MdReviews />
+                    My Enrolled Classes
+                  </Link>
+                </li>
+              </>
             }
+            
           </ul>
         </div>
       </div>

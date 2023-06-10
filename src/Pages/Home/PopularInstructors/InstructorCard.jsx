@@ -4,7 +4,7 @@ const InstructorCard = ({ instructor }) => {
     return (
         <div className="card w-full bg-base-100 shadow-sm rounded-none">
             <figure className="px-10 pt-10">
-                <img src={image} alt="Shoes" className="rounded-xl" />
+                <img src={image} alt="Shoes" className="rounded-xl w-96" />
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="card-title">{name}</h2>
