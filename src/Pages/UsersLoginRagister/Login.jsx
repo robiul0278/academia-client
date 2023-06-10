@@ -19,11 +19,6 @@ const Login = () => {
     const from = location.state?.from?.pathname || "/";
 
     const onSubmit = data => {
-        // event.preventDefault();
-        // const form = event.target;
-        // const email = form.email.value;
-        // const password = form.password.value;
-        // console.log(email, password);
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;

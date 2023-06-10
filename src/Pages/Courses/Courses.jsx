@@ -1,23 +1,22 @@
-import useCourses from "../../../Hooks/useCourses";
-import CourseCard from "./CourseCard";
+import useCourses from "../../Hooks/useCourses";
+import AllCourseCard from "./AllCourseCard";
 
-const PopularCourses = () => {
-
-const [courses] = useCourses();
-    // console.log(courses);
+const Courses = () => {
+    const [courses] = useCourses([])
+    // console.log(courses)
     return (
-        <section className="mt-16">
+        <section className="pt-48">
             <div className="text-center">
-                <h1 className="text-5xl font-semibold">Explore Our Popular Online <br />Courses</h1>
+                <h1 className="text-5xl font-semibold">Explore Our All Online <br />Courses</h1>
                 <h4 className="text-xl font-semibold">Limitless learning, more possibilities</h4>
             </div>
             <div className="grid md:grid-cols-3 grid-cols-1 gap-10 md:px-32 my-16 p-5">
                 {
                     courses.map(course =>
-                        <CourseCard
+                        <AllCourseCard
                             key={course._id}
                             course={course}
-                        ></CourseCard>
+                        ></AllCourseCard>
                     )
                 }
             </div>
@@ -25,4 +24,4 @@ const [courses] = useCourses();
     );
 };
 
-export default PopularCourses;
+export default Courses;

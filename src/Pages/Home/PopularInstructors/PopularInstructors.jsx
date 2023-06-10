@@ -1,16 +1,9 @@
-import { useEffect, useState } from "react";
+import useInstructors from "../../../Hooks/useInstructors";
 import InstructorCard from "./InstructorCard";
 
 const PopularInstructors = () => {
-
-    const [instructors, setInstructors] = useState([]);
-
-    useEffect(() => {
-        fetch('instructor.json')
-            .then(res => res.json())
-            .then(data => setInstructors(data));
-    }, [])
-    console.log(instructors)
+    const [instructors] = useInstructors();
+    // console.log(instructors)
     return (
         <section>
             <div className="text-center">
@@ -21,7 +14,7 @@ const PopularInstructors = () => {
                 {
                     instructors.map(instructor =>
                         <InstructorCard
-                        key={instructor.id}
+                        key={instructor._id}
                         instructor={instructor}
                         ></InstructorCard>
                     )
