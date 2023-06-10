@@ -11,7 +11,8 @@ import {
   MdOutlineFoodBank,
   MdMenuOpen,
   MdBook,
-  MdManageAccounts
+  MdManageAccounts,
+  MdReviews
 } from "react-icons/md";
 import Navbar from "../Shared/Navbar/Navbar";
 import Footer from "../Shared/Footer/Footer";

@@ -34,7 +34,7 @@ const Navbar = () => {
       {user ? (
         <>
           <li>
-            <Link to='dashboard/mycart'>
+            <Link to='/dashboard/mycart'>
             <FaShoppingCart></FaShoppingCart>
             <div className="badge badge-secondary">+{cart?.length || 0}</div>
             </Link>
