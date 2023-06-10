@@ -11,14 +11,17 @@ import {
 import Navbar from "../Shared/Navbar/Navbar";
 import Footer from "../Shared/Footer/Footer";
 import useAuth from "../Hooks/useAuth";
+import useInstructor from "../Hooks/useInstructor";
+import useAdmin from "../Hooks/useAdmin";
 // import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
   const { user } = useAuth();
 
-  // const [isAdmin] = useAdmin();
-  const isAdmin = true;
-
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+  // const isAdmin = true;
+console.log(isAdmin);
   return (
     <div>
       <Navbar></Navbar>
@@ -52,7 +55,7 @@ const Dashboard = () => {
             </div>
 
             {
-              isAdmin ?
+              isInstructor ?
                 <>
                   <li>
                     <Link to="/">
@@ -122,5 +125,4 @@ const Dashboard = () => {
     </div>
   );
 };
-
 export default Dashboard;
