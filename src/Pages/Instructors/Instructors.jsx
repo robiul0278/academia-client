@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import useInstructors from "../../Hooks/useInstructors";
 import AllInstructorCard from "./AllInstructorCard";
 
@@ -6,6 +7,9 @@ const Instructors = () => {
     console.log(instructors)
     return (
         <section className="pt-52">
+            <Helmet>
+                <title>ACADEMIA | Instructors</title>
+            </Helmet>
             <div className="text-center leading-loose">
                 <h1 className="text-5xl font-semibold">Explore Our All <br /> Instructors</h1>
                 <h4 className="text-xl font-semibold">Join our community of students around the world helping you succeed</h4>

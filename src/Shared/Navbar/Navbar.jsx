@@ -73,7 +73,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
-          <img className="w-16 hidden lg:flex" src={logo} alt="" />
+          <img className="w-14 hidden lg:flex" src={logo} alt="" />
           <h1 className="font-bold text-3xl">ACADEMIA</h1>
         </Link>
       </div>
