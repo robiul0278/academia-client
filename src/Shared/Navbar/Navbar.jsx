@@ -42,7 +42,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar max-w-screen-2xl mx-auto fixed py-5 z-10 bg-opacity-20 text-white bg-emerald-950">
+    <div className="navbar max-w-screen-2xl mx-auto fixed py-2 z-10 bg-opacity-20 text-white bg-emerald-950">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -78,7 +78,16 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
       {user ? (
-          <div className=" align-middle flex">
+          <div className="flex items-center">
+            <div>
+            <NavLink
+              to="/login"
+              onClick={handleLogOut}
+              className="kbd text-black"
+            >
+              LogOut
+            </NavLink>
+            </div>
             <div>
               <label
                 tabIndex={0}
@@ -89,14 +98,6 @@ const Navbar = () => {
                 </div>
               </label>
             </div>
-
-            <NavLink
-              to="/login"
-              onClick={handleLogOut}
-              className="px-4 btn logout py-1 rounded"
-            >
-              LogOut
-            </NavLink>
           </div>
         ) : (
           <div>
