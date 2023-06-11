@@ -1,10 +1,13 @@
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import useAuth from '../../Hooks/useAuth';
+
+const image_token=import.meta.env.VITE_Image_Token;
+
 const AddCourse = () => {
     const { register, handleSubmit, reset } = useForm();
     const { user } = useAuth();
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${image_token}`
 
 
     const onSubmit = data => {
@@ -19,23 +22,31 @@ const AddCourse = () => {
             .then(imgResponse => {
                 if (imgResponse.success) {
                     const imgURL = imgResponse.data.display_url;
-                    const { name, price, category, recipe } = data;
-                    const newItem = { name, price: parseFloat(price), category, recipe, image: imgURL }
+                    console.log('first imgURL', imgURL)
+                    const { courseName, instructor, price, availableSeats,status } = data;
+                    const newItem = { courseName, instructor, price: parseFloat(price), availableSeats,status, image: imgURL }
                     console.log(newItem)
-                    useAxiosSecure.post('/menu', newItem)
-                        .then(data => {
-                            console.log('after posting new menu item', data.data)
-                            if (data.data.insertedId) {
-                                reset();
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'Item added successfully',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                })
-                            }
+                        fetch('http://localhost:5000/courses', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(newItem)
                         })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log(data)
+                                if (data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Course Added successfully.',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                }
+                            })
                 }
             })
     }
@@ -48,12 +59,22 @@ const AddCourse = () => {
                         <label className="label">
                             <span className="label-text font-semibold">Course Name</span>
                         </label>
-                        <input
-                            type="text"
-                            placeholder="Course Name"
-                            className="input input-success input-bordered w-full "
-                            {...register("courseName")}
-                        />
+                        <div className="form-control w-full ">
+                        <select defaultValue="Select One" {...register("courseName")} className="select select-bordered">
+                            <option disabled>Select One</option>
+                            <option>Mathematics</option>
+                            <option>Physics</option>
+                            <option>Biology</option>
+                            <option>Chemistry</option>
+                            <option>Bangla</option>
+                            <option>History</option>
+                            <option>ICT</option>
+                            <option>Art</option>
+                            <option>Economics</option>
+                            <option>Sociology</option>
+                            <option>Philosophy</option>
+                        </select>
+                    </div>
                     </div>
                     <div className="form-control w-full ml-4">
                         <label className="label">
@@ -109,7 +130,7 @@ const AddCourse = () => {
                         <label className="label">
                             <span className="label-text">Course Status</span>
                         </label>
-                        <select defaultValue="" {...register("status", { required: true })} className="select select-bordered">
+                        <select defaultValue="Status" {...register("status", { required: true })} className="select input-success select-bordered">
                             <option disabled>Select</option>
                             <option>pending</option>
                         </select>

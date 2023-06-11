@@ -8,8 +8,6 @@ import {
   MdManageAccounts,
   MdReviews
 } from "react-icons/md";
-import Navbar from "../Shared/Navbar/Navbar";
-import Footer from "../Shared/Footer/Footer";
 import useAuth from "../Hooks/useAuth";
 import useInstructor from "../Hooks/useInstructor";
 import useAdmin from "../Hooks/useAdmin";
@@ -24,8 +22,7 @@ const Dashboard = () => {
   console.log(isAdmin);
   return (
     <div>
-      <Navbar></Navbar>
-      <div className="drawer lg:drawer-open pt-24">
+      <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
           {/* Page content here */}
@@ -93,14 +90,8 @@ const Dashboard = () => {
                   </Link>
                 </li>
               </> : <>
-                <li>
-                  <Link to="/">
-                    {" "}
-                    <FaHome />
-                    HOME
-                  </Link>
-                </li>
-                <li>
+
+                <li className="mt-10">
                   <Link to="/dashboard/mycart">
                     {" "}
                     <FaCartPlus />
@@ -108,19 +99,51 @@ const Dashboard = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="">
+                  <Link to="/dashboard/enrolled">
                     {" "}
                     <MdReviews />
                     My Enrolled Classes
                   </Link>
                 </li>
+                <li>
+                  <Link to="/dashboard/paymenthistory">
+                    {" "}
+                    <MdReviews />
+                    Payment History
+                  </Link>
+                </li>
               </>
             }
-            
+
+            <hr className="border mt-3" />
+
+            <li>
+              <Link to="/">
+                {" "}
+                <FaHome />
+                HOME
+              </Link>
+            </li>
+            <li>
+              <Link to="/instructor">
+                {" "}
+                <MdManageAccounts />
+                Instructor
+              </Link>
+            </li>
+            <li>
+              <Link to="/courses">
+                {" "}
+                <MdBook />
+                Courses
+              </Link>
+            </li>
+
+
           </ul>
         </div>
       </div>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 };

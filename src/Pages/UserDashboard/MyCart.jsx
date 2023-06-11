@@ -2,10 +2,10 @@ import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 import useCart from "../../Hooks/useCart";
+import { Link } from "react-router-dom";
 
 const MyCart = () => {
     const [cart, refetch] = useCart();
-    // const total = cart.reduce((sum, item) => item.price + sum, 0);
     const handleDelete = item => {
         Swal.fire({
             title: 'Are you sure?',
@@ -34,6 +34,8 @@ const MyCart = () => {
             }
         })
     }
+
+    console.log(cart)
 
     return (
         <div className="w-full p-5">
@@ -79,7 +81,7 @@ const MyCart = () => {
                                     <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
                                 </td>
                                 <td>
-                                    <button className="btn btn-accent btn-sm">PAY</button>
+                                    <Link to={`/dashboard/payment/${item?._id}`}><button className="btn btn-accent btn-sm">PAY</button></Link>
                                 </td>
                             </tr>)
                         }

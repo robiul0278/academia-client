@@ -12,6 +12,9 @@ import MyCourses from "../Pages/InstructorDashboard/MyCourses";
 import AddCourse from "../Pages/InstructorDashboard/AddCourse";
 import ManageUsers from "../Pages/AdminDashboard/ManageUsers";
 import ManageCourse from "../Pages/AdminDashboard/ManageCourse";
+import Payment from "../Pages/UserDashboard/Payment";
+import EnrolledCourse from "../Pages/UserDashboard/EnrolledCourse";
+import PaymentHistory from "../Pages/UserDashboard/PaymentHistory";
 
 const router = createBrowserRouter([
     {
@@ -26,7 +29,7 @@ const router = createBrowserRouter([
             {
                 path: "/login",
                 element: <Login></Login>
-            }, 
+            },
             {
                 path: "/register",
                 element: <Register></Register>
@@ -49,8 +52,20 @@ const router = createBrowserRouter([
                 path: 'mycart',
                 element: <MyCart></MyCart>
             },
+            {
+                path: "payment/:id",
+                element: <Payment></Payment>
+            },
+            {
+                path: "enrolled",
+                element: <EnrolledCourse></EnrolledCourse>
+            },
+            {
+                path: "paymenthistory",
+                element: <PaymentHistory></PaymentHistory>
+            },
 
-            // instrtuctor dashboard 
+            // instructor dashboard
             {
                 path: 'addcourse',
                 element: <AddCourse></AddCourse>
