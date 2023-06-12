@@ -9,7 +9,7 @@ const ManageCourse = () => {
     //     return res.json()
     // })
 
-    const [courses, refetch] = useCourses
+    const [courses, refetch] = useCourses();
 
     const handleApproved = user => {
         fetch(`http://localhost:5000/courses/approved/${user._id}`, {

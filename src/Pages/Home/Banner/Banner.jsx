@@ -11,7 +11,7 @@ const Banner = () => {
                     <img src={img2} className="w-full" />
                     <div className="absolute flex  justify-center items-center h-full bg-gradient-to-r from-gray-500">
                         <div className="text-white text-start mt-10 md:space-y-7 md:pl-12 w-2/3">
-                            <h1 className="md:text-md text-sm text-green-500 font-bold">
+                            <h1 className="md:text-xl text-sm text-green-500 font-bold">
                                 WELCOME TO ACADEMIA
                             </h1>
                             <h1 className="md:text-5xl text-2xl font-bold">

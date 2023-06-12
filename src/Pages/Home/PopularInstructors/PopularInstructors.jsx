@@ -12,7 +12,7 @@ const PopularInstructors = () => {
             </div>
             <div className="grid p-5 md:grid-cols-3 grid-cols-1 gap-10 md:px-32 md:my-16">
                 {
-                    instructors.map(instructor =>
+                    instructors.slice(0, 6).map(instructor =>
                         <InstructorCard
                         key={instructor._id}
                         instructor={instructor}

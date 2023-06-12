@@ -11,6 +11,7 @@ import {
 import useAuth from "../Hooks/useAuth";
 import useInstructor from "../Hooks/useInstructor";
 import useAdmin from "../Hooks/useAdmin";
+import { Helmet } from "react-helmet";
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -20,6 +21,9 @@ const Dashboard = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>ACADEMIA | Dashboard</title>
+      </Helmet>
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
@@ -51,13 +55,6 @@ const Dashboard = () => {
 
             {
               isAdmin ? <>
-                <li>
-                  <Link to="/">
-                    {" "}
-                    <MdBook />
-                    Admin Home
-                  </Link>
-                </li>
                 <li>
                   <Link to="/dashboard/managecourse">
                     {" "}

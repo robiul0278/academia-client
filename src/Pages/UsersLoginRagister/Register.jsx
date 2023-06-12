@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet";
 const Register = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
     const [error, setError] = useState("");
 
@@ -37,6 +37,7 @@ const Register = () => {
                                     console.log(data)
                                     if (data.insertedId) {
                                         reset();
+                                        logOut();
                                         Swal.fire({
                                             position: 'top-end',
                                             icon: 'success',
@@ -74,6 +75,9 @@ const Register = () => {
                 <div className="hero-content">
                     <div className="card flex-shrink-0 w-full border bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body w-full">
+                        <div className="text-center">
+                                <h1 className="text-5xl font-semibold">Please Register !</h1>
+                            </div>
                             <div className="flex">
                                 <div className="form-control">
                                     <label className="label">
