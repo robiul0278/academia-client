@@ -2,13 +2,16 @@ import CountUp from 'react-countup';
 import icon1 from "../../../assets/Achievements/award.png"
 import icon2 from "../../../assets/Achievements/stars.png"
 import icon3 from "../../../assets/Achievements/winner.png"
+import { Fade } from 'react-awesome-reveal';
 
 const Achievements = () => {
     return (
         <div className='md:py-16 p-2 md:px-16'>
             <div className="text-center">
-                <h1 className="md:text-5xl text-2xl font-semibold mb-3">Our Achievements</h1>
-                <h4 className="md:px-48 text-xs md:text-sm font-semibold">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which enjoy with my whole heart. I am alone, and feel the charm of existence in this spot,which wascreated for the bliss of souls like mine.</h4>
+                <Fade>
+                    <h1 className="md:text-5xl text-2xl font-semibold mb-3">Our Achievements</h1>
+                    <h4 className="md:px-48 text-xs md:text-sm font-semibold">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which enjoy with my whole heart. I am alone, and feel the charm of existence in this spot,which wascreated for the bliss of souls like mine.</h4>
+                </Fade>
             </div>
             <div className='grid md:grid-cols-3 grid-cols-1 gap-10 mt-10'>
                 <div className='flex items-center shadow-sm bg-white p-5'>

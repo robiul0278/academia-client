@@ -12,6 +12,7 @@ import useAuth from "../Hooks/useAuth";
 import useInstructor from "../Hooks/useInstructor";
 import useAdmin from "../Hooks/useAdmin";
 import { Helmet } from "react-helmet";
+import { Fade } from "react-awesome-reveal";
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -119,6 +120,7 @@ const Dashboard = () => {
 
             <hr className="border mt-3" />
 
+            <Fade>
             <li>
               <Link to="/">
                 {" "}
@@ -140,6 +142,7 @@ const Dashboard = () => {
                 Courses
               </Link>
             </li>
+            </Fade>
 
 
           </ul>
