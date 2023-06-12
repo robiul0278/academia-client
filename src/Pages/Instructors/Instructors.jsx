@@ -4,6 +4,7 @@ import AllInstructorCard from "./AllInstructorCard";
 
 const Instructors = () => {
     const [instructors] = useInstructors();
+    const teacher = instructors.filter(item => item.role === "instructor")
     console.log(instructors)
     return (
         <section className="pt-52">
@@ -16,7 +17,7 @@ const Instructors = () => {
             </div>
             <div className="grid p-5 md:grid-cols-3 grid-cols-1 gap-10 md:px-32 my-16">
                 {
-                    instructors.map(instructor =>
+                    teacher.map(instructor =>
                         <AllInstructorCard
                             key={instructor.id}
                             instructor={instructor}
