@@ -31,7 +31,7 @@ const CheckoutForm = ({ item ,price }) => {
     // }, [price, axiosSecure])
 
  useEffect(() => {
-    axios.post('http://localhost:5000/create-payment-intent',{
+    axios.post('https://summer-camp-server-seven-pink.vercel.app/create-payment-intent',{
         price:price
     }).then(res=>setClientSecret(res.data.clientSecret))
  }, [price])

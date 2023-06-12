@@ -26,7 +26,7 @@ const AddCourse = () => {
                     const { courseName, instructor, price, availableSeats, } = data;
                     const newItem = { courseName, instructor, price: parseFloat(price), availableSeats: parseFloat(availableSeats), status: "Pending", enrolled: 0, image: imgURL , email: user.email }
                     console.log(newItem)
-                    fetch('http://localhost:5000/courses', {
+                    fetch('https://summer-camp-server-seven-pink.vercel.app/courses', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

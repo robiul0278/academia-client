@@ -6,7 +6,7 @@ const useCourses = () => {
     // const [loading, setLoading] = useState();
 
     // useEffect(() => {
-    //     fetch('http://localhost:5000/courses')
+    //     fetch('https://summer-camp-server-seven-pink.vercel.app/courses')
     //         .then(res => res.json())
     //         .then(data => {
     //             setCourses(data);
@@ -14,7 +14,7 @@ const useCourses = () => {
     //         });
     // }, [])
     const { data: courses = [], refetch } = useQuery(['courses'], async () => {
-        const res = await fetch("http://localhost:5000/courses")
+        const res = await fetch("https://summer-camp-server-seven-pink.vercel.app/courses")
         return res.json()
     })
     return [courses, refetch];

@@ -4,15 +4,11 @@ import Swal from "sweetalert2";
 import useCourses from "../../Hooks/useCourses";
 
 const ManageCourse = () => {
-    // const { data: courses = [], refetch } = useQuery(['courses'], async () => {
-    //     const res = await fetch("http://localhost:5000/courses")
-    //     return res.json()
-    // })
 
     const [courses, refetch] = useCourses();
 
     const handleApproved = user => {
-        fetch(`http://localhost:5000/courses/approved/${user._id}`, {
+        fetch(`https://summer-camp-server-seven-pink.vercel.app/courses/approved/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -32,7 +28,7 @@ const ManageCourse = () => {
     }
 
     const handleDenied = user => {
-        fetch(`http://localhost:5000/courses/denied/${user._id}`, {
+        fetch(`https://summer-camp-server-seven-pink.vercel.app/courses/denied/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -78,7 +74,7 @@ const ManageCourse = () => {
 
                                         <button onClick={() => handleDenied(item)} className="btn btn-sm  bg-orange-400 ">DENIED</button>
 
-                                        <button onClick={() => handleDenied(item)} className="btn btn-sm  bg-slate-400 ">Feedback</button>
+                                        <button className="btn btn-sm  bg-slate-400 ">Feedback</button>
                                 </div>
                             </div>
                         </div>
