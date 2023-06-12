@@ -54,17 +54,24 @@ const Dashboard = () => {
             {
               isAdmin ? <>
                 <li>
-                  <Link to="">
+                  <Link to="/">
                     {" "}
                     <MdBook />
-                    MANAGE BOOKING
+                    Admin Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/managecourse">
+                    {" "}
+                    <MdBook />
+                    Manage Courses
                   </Link>
                 </li>
                 <li>
                   <Link to="/dashboard/manageusers">
                     {" "}
                     <MdManageAccounts />
-                    Manage USERS
+                    Manage Users
                   </Link>
                 </li>
               </> : isInstructor ? <>

@@ -1,6 +1,6 @@
 
 const CourseCard = ({ course }) => {
-    const { courseName, instructor, price, image} = course;
+    const { courseName,availableSeats, enrolled, instructor, price, image} = course;
     return (
         <>
             <div className="card w-full bg-base-100 shadow-sm">
@@ -11,8 +11,12 @@ const CourseCard = ({ course }) => {
                         <div className="badge badge-secondary">NEW</div>
                     </h2>
                     <p>Instructor : {instructor}</p>
+                    <p>Available Seat : {availableSeats}</p>
                     <div className="card-actions justify-end">
                         <div className="badge badge-outline">Price : ${price}</div>
+                    </div>
+                    <div className="card-actions justify-end">
+                        <div className="badge badge-outline">Enrolled : {enrolled}</div>
                     </div>
                 </div>
             </div>
