@@ -1,6 +1,6 @@
 
 const CourseCard = ({ course }) => {
-    const { courseName,availableSeats, enrolled, instructor, price, image} = course;
+    const { courseName, availableSeats, enrolled, instructor, price, image} = course;
     return (
         <>
             <div className="card w-full bg-base-100 shadow-sm">

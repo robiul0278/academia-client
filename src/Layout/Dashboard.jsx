@@ -11,15 +11,13 @@ import {
 import useAuth from "../Hooks/useAuth";
 import useInstructor from "../Hooks/useInstructor";
 import useAdmin from "../Hooks/useAdmin";
-// import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
   const { user } = useAuth();
-
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
   // const isAdmin = true;
-  console.log(isAdmin);
+
   return (
     <div>
       <div className="drawer lg:drawer-open">
@@ -36,7 +34,7 @@ const Dashboard = () => {
             <div className="p-5 font-bold font-serif">
               <h1 className="text-3xl">ACADEMIA</h1>
             </div>
-            <div>
+            <div className="">
               <div className="stat bg-white rounded">
                 <div className="stat-figure text-secondary">
                   <div className="avatar online">

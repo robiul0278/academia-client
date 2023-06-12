@@ -24,7 +24,7 @@ const AddCourse = () => {
                     const imgURL = imgResponse.data.display_url;
                     console.log('first imgURL', imgURL)
                     const { courseName, instructor, price, availableSeats, } = data;
-                    const newItem = { courseName, instructor, price: parseFloat(price), availableSeats: parseFloat(availableSeats), status: "Pending", enrolled: 0, image: imgURL }
+                    const newItem = { courseName, instructor, price: parseFloat(price), availableSeats: parseFloat(availableSeats), status: "Pending", enrolled: 0, image: imgURL , email: user.email }
                     console.log(newItem)
                     fetch('http://localhost:5000/courses', {
                         method: 'POST',

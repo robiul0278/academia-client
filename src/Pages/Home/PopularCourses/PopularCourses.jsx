@@ -13,7 +13,7 @@ const [courses] = useCourses();
             </div>
             <div className="grid md:grid-cols-3 grid-cols-1 gap-10 md:px-32 my-16 p-5">
                 {
-                    courses.map(course =>
+                    courses?.map(course =>
                         <CourseCard
                             key={course._id}
                             course={course}

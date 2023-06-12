@@ -3,7 +3,7 @@ import useCourses from "../../Hooks/useCourses";
 import AllCourseCard from "./AllCourseCard";
 
 const Courses = () => {
-    const [courses] = useCourses([])
+    const [courses] = useCourses()
     // console.log(courses)
     return (
         <section className="pt-48">

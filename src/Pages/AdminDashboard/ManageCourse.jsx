@@ -1,12 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
+import useCourses from "../../Hooks/useCourses";
 
 const ManageCourse = () => {
-    const { data: courses = [], refetch } = useQuery(['courses'], async () => {
-        const res = await fetch("http://localhost:5000/courses")
-        return res.json()
-    })
+    // const { data: courses = [], refetch } = useQuery(['courses'], async () => {
+    //     const res = await fetch("http://localhost:5000/courses")
+    //     return res.json()
+    // })
+
+    const [courses, refetch] = useCourses
 
     const handleApproved = user => {
         fetch(`http://localhost:5000/courses/approved/${user._id}`, {
@@ -52,7 +55,7 @@ const ManageCourse = () => {
             <Helmet>
                 <title>ACADEMIA | Manage Course</title>
             </Helmet>
-            <h3 className="text-3xl font-semibold text-center my-4">MANAGE USERS</h3>
+            <h3 className="text-3xl font-semibold text-center my-4">Manage Courses</h3>
             <div className="grid w-full gap-5">
                 {
                     courses.map((item) =>
