@@ -8,10 +8,10 @@ const [courses] = useCourses();
     return (
         <section className="mt-16">
             <div className="text-center">
-                <h1 className="text-5xl font-semibold">Explore Our Popular Online <br />Courses</h1>
-                <h4 className="text-xl font-semibold">Limitless learning, more possibilities</h4>
+                <h1 className="md:text-5xl text-2xl font-semibold">Explore Our Popular Online <br />Courses</h1>
+                <h4 className="md:text-xl font-semibold">Limitless learning, more possibilities</h4>
             </div>
-            <div className="grid md:grid-cols-3 grid-cols-1 gap-10 md:px-32 my-16 p-5">
+            <div className="grid md:grid-cols-3 grid-cols-1 gap-10 md:px-32 md:my-16 p-5">
                 {
                     courses?.map(course =>
                         <CourseCard

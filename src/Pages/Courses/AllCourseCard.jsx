@@ -8,7 +8,7 @@ const AllCourseCard = ({ course }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [cart , refetch] = useCart();
-    const { courseName, instructor, price, image, availableSeats, _id } = course;
+    const { courseName, instructor, price, image, availableSeats, _id, enrolled } = course;
     console.log(cart)
 
     const handleAddToCart = item => {
@@ -60,14 +60,14 @@ const AllCourseCard = ({ course }) => {
                         {courseName}
                     </h2>
                     <p>Instructor : {instructor}</p>
-
-
+                    <p>Available Seat : {availableSeats}</p>
                     <div className="card-actions justify-end">
-                        <button className="border btn-wid btn-sm">Price : ${price}</button>
-
-                        <button className="border btn-wid btn-sm">Available seats: : {availableSeats}</button>
+                        <div className="badge badge-outline">Price : ${price}</div>
                     </div>
-                        <button onClick={() => handleAddToCart(course)} className="btn btn-accent">Add to Cart</button>
+                    <div className="card-actions justify-end">
+                        <div className="badge badge-outline">Enrolled : {enrolled}</div>
+                    </div>
+                    <button onClick={() => handleAddToCart(course)} className="btn btn-accent">Add to Cart</button>
                 </div>
             </div>
         </>
@@ -75,3 +75,4 @@ const AllCourseCard = ({ course }) => {
 };
 
 export default AllCourseCard;
+

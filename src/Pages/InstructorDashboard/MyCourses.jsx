@@ -14,7 +14,7 @@ const MyCourses = () => {
                 {
                     myCourse.map((item) =>
                         <div key={item._id} className="card card-side bg-base-100 shadow-sm">
-                            <figure><img className="" src={item.image} alt="Movie" /></figure>
+                            <figure><img className="w-48" src={item.image} alt="Movie" /></figure>
                             <div className="flex justify-around w-full">
                                 <div className="p-5">
                                     <h2 className="card-title">{item.courseName}</h2>

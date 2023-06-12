@@ -72,7 +72,7 @@ const Register = () => {
             </Helmet>
             <div className="hero min-h-screen py-32 bg-base-200">
                 <div className="hero-content">
-                    <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
+                    <div className="card flex-shrink-0 w-full border bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body w-full">
                             <div className="flex">
                                 <div className="form-control">
@@ -127,11 +127,11 @@ const Register = () => {
                                 <h4 className="text-yellow-400">{error}</h4>
 
                             </div>
-                            <div className="form-control mt-6">
+                            <div className="form-control">
                                 <input className="btn btn-primary" type="submit" value="Sign Up" />
                             </div>
                         </form>
-                        <p className="text-center">Already have an account <span className="text-blue-600"><Link to="/login">Login</Link></span> </p>
+                        <p className="text-center">Already have an account ? <span className="text-blue-600"><Link to="/login">Login</Link></span> </p>
                         <SocialLogin></SocialLogin>
                     </div>
                 </div>
