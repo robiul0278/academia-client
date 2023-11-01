@@ -2,8 +2,9 @@ import { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../providers/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 const SocialLogin = () => {
-  const { googleSignIn } = useContext(AuthContext);
+  const { googleSignIn ,updateUserProfile} = useContext(AuthContext);
   const navigate = useNavigate()
   const location = useLocation();
 
@@ -15,7 +16,6 @@ const SocialLogin = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
-        console.log(user);
         const saveUser = { name: user.displayName, email: user.email, image: user.photoURL }
         fetch("https://summer-camp-server-seven-pink.vercel.app/users", {
           method: "POST",
@@ -26,9 +26,16 @@ const SocialLogin = () => {
         })
           .then((response) => response.json())
           .then(() => {
+            updateUserProfile()
+              .then(() => {
+                toast.success("Login successful!",{
+                  position: "top-center",
+                  theme: "light",
+                  autoClose: 3000,
+                })
+              })
             navigate(from, { replace: true });
           })
-
       }).catch((error) => {
         const errorMessage = error.message;
         console.log(errorMessage)

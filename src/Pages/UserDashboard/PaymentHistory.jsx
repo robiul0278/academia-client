@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet";
 import usePayments from "../../Hooks/usePayments";
-import { Link } from "react-router-dom";
 
 const PaymentHistory = () => {
     const [payment] = usePayments();

@@ -1,10 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home/Home";
-import Login from "../Pages/UsersLoginRagister/Login";
-import Register from "../Pages/UsersLoginRagister/Register";
+import Login from "../Pages/UsersLoginRegister/Login";
+import Register from "../Pages/UsersLoginRegister/Register";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
-import Instructors from "../Pages/Instructors/Instructors";
 import Courses from "../Pages/Courses/Courses";
 import Dashboard from "../Layout/Dashboard";
 import MyCart from "../Pages/UserDashboard/MyCart";
@@ -15,74 +14,86 @@ import ManageCourse from "../Pages/AdminDashboard/ManageCourse";
 import Payment from "../Pages/UserDashboard/Payment";
 import EnrolledCourse from "../Pages/UserDashboard/EnrolledCourse";
 import PaymentHistory from "../Pages/UserDashboard/PaymentHistory";
+import PrivateRoute from "./PrivateRoute";
+import AdminHome from "../Pages/AdminDashboard/AdminHome";
+import InstructorHome from "../Pages/InstructorDashboard/InstructorHome"
+import Instructors from "../Pages/Instructors/Instructors";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        errorElement: <ErrorPage></ErrorPage>,
-        element: <Main></Main>,
+        errorElement: <ErrorPage/>,
+        element: <Main/>,
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home/>
             },
             {
                 path: "/login",
-                element: <Login></Login>
+                element: <Login/>
             },
             {
                 path: "/register",
-                element: <Register></Register>
-            },
-            {
-                path: "/instructor",
-                element: <Instructors></Instructors>
+                element: <Register/>
             },
             {
                 path: "/courses",
-                element: <Courses></Courses>
+                element: <Courses/>
+            },
+            {
+                path:"instructor",
+                element: <Instructors/>
             }
         ]
     },
     {
         path: "dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard/></PrivateRoute>,
         children: [
             {
-                path: 'mycart',
-                element: <MyCart></MyCart>
+                path: 'myCart',
+                element: <PrivateRoute><MyCart/></PrivateRoute>
             },
             {
                 path: "payment/:id",
-                element: <Payment></Payment>
+                element: <PrivateRoute> <Payment/></PrivateRoute>
             },
             {
                 path: "enrolled",
-                element: <EnrolledCourse></EnrolledCourse>
+                element: <PrivateRoute><EnrolledCourse/></PrivateRoute>
             },
             {
-                path: "paymenthistory",
-                element: <PaymentHistory></PaymentHistory>
+                path: "paymentHistory",
+                element: <PrivateRoute><PaymentHistory/></PrivateRoute>
             },
 
             // instructor dashboard
             {
-                path: 'addcourse',
-                element: <AddCourse></AddCourse>
+                path:'instructorHome',
+                element: <PrivateRoute><InstructorHome/></PrivateRoute>
             },
             {
-                path: 'mycourses',
-                element: <MyCourses></MyCourses>
+                path: 'addCourse',
+                element: <PrivateRoute><AddCourse/></PrivateRoute>
+            },
+            {
+                path: 'myCourses',
+                element: <PrivateRoute><MyCourses/></PrivateRoute>
             },
 
             // admin dashboard 
             {
-                path: 'managecourse',
-                element: <ManageCourse></ManageCourse>
+                path: 'adminHome',
+                element: <PrivateRoute><AdminHome/></PrivateRoute>
             },
             {
-                path: 'manageusers',
-                element: <ManageUsers></ManageUsers>
+                path: 'manageCourse',
+                element: <PrivateRoute><ManageCourse/></PrivateRoute>
+            },
+            {
+                path: 'manageUsers',
+                element: <PrivateRoute><ManageUsers/></PrivateRoute>
             }
         ]
     }

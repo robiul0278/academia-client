@@ -1,0 +1,51 @@
+.font {
+  font-family: "Anton", sans-serif;
+  font-family: "Gabarito", sans-serif;
+}
+
+.start{
+    background-color: #25ab7c;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: 100px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.start:hover{
+    background-color: #ffffff;
+    color: black;
+    padding: 5px 10px;
+    font-size: 14px;
+    transition: .5s;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+}
+
+.get{
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: 100px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.get:hover{
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: 100px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: black;
+    transition: .5s;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+}

@@ -1,23 +1,29 @@
+// Import necessary modules
 import { useQuery } from "@tanstack/react-query";
-// import { useEffect, useState } from "react";
+import axios from "axios"; // Import Axios
 
+// Define the useCourses custom hook
 const useCourses = () => {
-    // const [courses, setCourses] = useState([]);
-    // const [loading, setLoading] = useState();
+  const { data: courses = [], isLoading: loading, refetch } = useQuery(
+    ["courses"],
+    async () => {
+      try {
+        // Make an API request using Axios directly
+        const res = await axios.get(
+          "https://summer-camp-server-seven-pink.vercel.app/courses"
+        );
+        // Parse the JSON response
+        const jsonData = res.data;
+        return jsonData;
+      } catch (error) {
+        // Handle any errors that occur during the request
+        console.error("Error fetching courses:", error);
+        throw error; // Rethrow the error so React Query can handle it
+      }
+    }
+  );
 
-    // useEffect(() => {
-    //     fetch('https://summer-camp-server-seven-pink.vercel.app/courses')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setCourses(data);
-    //             setLoading(false);
-    //         });
-    // }, [])
-    const { data: courses = [], refetch } = useQuery(['courses'], async () => {
-        const res = await fetch("https://summer-camp-server-seven-pink.vercel.app/courses")
-        return res.json()
-    })
-    return [courses, refetch];
+  // Return the courses data, loading state, and refetch function
+  return { courses, loading, refetch };
 };
-
 export default useCourses;

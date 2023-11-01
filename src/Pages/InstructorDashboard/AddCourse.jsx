@@ -23,13 +23,14 @@ const AddCourse = () => {
                 if (imgResponse.success) {
                     const imgURL = imgResponse.data.display_url;
                     console.log('first imgURL', imgURL)
-                    const { courseName, instructor, price, availableSeats, } = data;
-                    const newItem = { courseName, instructor, price: parseFloat(price), availableSeats: parseFloat(availableSeats), status: "Pending", enrolled: 0, image: imgURL , email: user.email }
+                    const { courseName, price, title } = data;
+                    const newItem = { courseName, instructor: user?.displayName, price: parseFloat(price), title, status: "Pending", enrolled: 0, image: imgURL, email: user?.email }
                     console.log(newItem)
                     fetch('https://summer-camp-server-seven-pink.vercel.app/courses', {
                         method: 'POST',
                         headers: {
-                            'content-type': 'application/json'
+                            'content-type': 'application/json',
+                            'Authorization': `Bearer ${localStorage.getItem('access-token')}`
                         },
                         body: JSON.stringify(newItem)
                     })
@@ -51,92 +52,74 @@ const AddCourse = () => {
             })
     }
     return (
-        <div className="w-full px-10">
+        <div className="w-full p-5">
             <h1 className='text-5xl font-bold text-center mb-16'>Add a Course</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='flex mb-4'>
+
+            <form onSubmit={handleSubmit(onSubmit)} >
+                <div className='grid md:grid-cols-2 gap-5'>
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text font-semibold">Course Name</span>
                         </label>
                         <div className="form-control w-full ">
-                            <select defaultValue="Select One" {...register("courseName")} className="select select-bordered">
-                                <option disabled>Select One</option>
+                            <select defaultValue="Select One" {...register("courseName")} required className="select select-bordered">
+                                <option disabled selected>Select One - </option>
+                                <option>Art</option>
                                 <option>Mathematics</option>
+                                <option>Higher Math</option>
                                 <option>Physics</option>
                                 <option>Biology</option>
                                 <option>Chemistry</option>
                                 <option>Bangla</option>
-                                <option>History</option>
+                                <option>English</option>
                                 <option>ICT</option>
-                                <option>Art</option>
                                 <option>Economics</option>
                                 <option>Sociology</option>
                                 <option>Philosophy</option>
+                                <option>Social</option>
+                                <option>Geography</option>
                             </select>
                         </div>
                     </div>
-                    <div className="form-control w-full ml-4">
-                        <label className="label">
-                            <span className="label-text font-semibold">Instructor Name</span>
-                        </label>
-                        <input
-                            defaultValue={user?.displayName}
-                            readOnly
-                            type="text"
-                            className="input input-success input-bordered w-full "
-                            {...register("instructor")}
-                        />
+                    <div className='flex mb-4'>
+                        <div className="form-control w-full">
+                            <label className="label">
+                                <span className="label-text font-semibold">Course Title</span>
+                            </label>
+                            <input
+                                type="text"
+                                required
+                                placeholder="title"
+                                className="input input-success input-bordered w-full "
+                                {...register("title")}
+                            />
+                        </div>
+
                     </div>
-                </div>
-                <div className='flex mb-4'>
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text font-semibold">Available seats</span>
-                        </label>
-                        <input
-                            type="number"
-                            placeholder="Available seats"
-                            className="input input-success input-bordered w-full "
-                            {...register("availableSeats")}
-                        />
-                    </div>
-                    <div className="form-control ml-4 w-full">
-                        <label className="label">
-                            <span className="label-text font-semibold">Instructor email</span>
-                        </label>
-                        <input
-                            defaultValue={user?.email}
-                            readOnly
-                            type="text"
-                            className="input input-success input-bordered w-full "
-                            {...register("email")}
-                        />
-                    </div>
-                </div>
-                <div className='flex'>
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text font-semibold">Course Price</span>
                         </label>
                         <input
                             type="number"
-                            placeholder='Course Price'
+                            required 
+                            placeholder='৳ ****'
                             className="input input-success input-bordered w-full "
                             {...register("price")}
                         />
                     </div>
-                    <div className="form-control w-full ml-4 ">
+                    <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text font-semibold">Course Image</span>
                         </label>
-                        <input type="file" {...register("image", { required: true })} className="file-input file-input-bordered w-full max-w-xs" />
+                        <input type="file" {...register("image", { required: true })} required/>
                     </div>
                 </div>
 
-                <input className="btn w-full btn-accent mt-4" type="submit" value="Add Item" />
+                <input className="btn w-full btn-sm btn-error mt-4" type="submit" value="Publish New Course" />
             </form>
         </div>
+
     );
 };
 

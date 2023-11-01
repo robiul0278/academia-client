@@ -1,22 +1,26 @@
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+import { useEffect } from "react";
 
 const CourseCard = ({ course }) => {
-    const { courseName, availableSeats, enrolled, instructor, price, image} = course;
+    useEffect(() => {
+        AOS.init();
+      }, []);
+    const { courseName, title, price, image } = course;
     return (
         <>
-            <div className="card w-full bg-base-100 shadow-sm">
-                <figure className="px-10 pt-10"><img src={image} alt="course image" /></figure>
+            <div data-aos="fade-up" className="card card-compact w-full border hover:border-2 hover:border-green-600 border-[#1C7455] rounded-none transition duration-500 ease-in-out">
+                <figure><img src={image} alt="Shoes" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title">
-                        {courseName}
-                        <div className="badge badge-secondary">NEW</div>
-                    </h2>
-                    <p>Instructor : {instructor}</p>
-                    <p>Available Seat : {availableSeats}</p>
-                    <div className="card-actions justify-end">
-                        <div className="badge badge-outline">Price : ${price}</div>
-                    </div>
-                    <div className="card-actions justify-end">
-                        <div className="badge badge-outline">Enrolled : {enrolled}</div>
+                <h2 className="md:card-title font-semibold text-[14px]">{courseName}</h2>
+                    <p className="font-semibold font-sans md:text-[16px] text-[14px]">{title}</p>
+                    <div className="card-actions justify-start">
+                        <p className="font-bold text-green-600">৳ {price}</p>
+                        <Link to='/courses' className="border rounded px-2 bg-[#1C7455] text-white hover:bg-green-600 transition duration-300 ease-in-out"><FontAwesomeIcon icon={faAngleRight} /></Link>
+
                     </div>
                 </div>
             </div>

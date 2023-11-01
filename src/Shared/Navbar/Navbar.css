@@ -1,0 +1,22 @@
+.active {
+  background-color: #1C7455;
+  color: #ffffff;
+}
+.login:hover {
+  background-color: #03af5c;
+  color: #ffffff;
+  border: 0;
+}
+
+.navText:hover {
+  background-color: #00bf63;
+  color: #ffffff;
+  transition-duration: 0.4s;
+}
+
+.logos {
+  color: #1C7455;
+  font-family: "Anton", sans-serif;
+  font-family: "Gabarito", sans-serif;
+  font-family: "Russo One", sans-serif;
+}

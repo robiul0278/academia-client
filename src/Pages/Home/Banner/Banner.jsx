@@ -1,102 +1,30 @@
-import img2 from "../../../assets/banner/banner1.jpg";
-import img1 from "../../../assets/banner/banner2.jpg";
-import img3 from "../../../assets/banner/banner3.jpg";
-import img4 from "../../../assets/banner/banner4.jpg";
+import "./Banner.css"
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+import { useEffect } from "react";
 
 const Banner = () => {
+    useEffect(() => {
+        AOS.init();
+      }, []);
     return (
-        <>
-            <div className="carousel w-full md:-mt-16">
-                <div id="slide1" className="carousel-item relative w-full">
-                    <img src={img2} className="w-full" />
-                    <div className="absolute flex  justify-center items-center h-full bg-gradient-to-r from-gray-500">
-                        <div className="text-white text-start mt-10 md:space-y-7 md:pl-12 w-2/3">
-                            <h1 className="md:text-xl text-sm text-green-500 font-bold">
-                                WELCOME TO ACADEMIA
-                            </h1>
-                            <h1 className="md:text-5xl text-2xl font-bold">
-                                Best Online Education Expertise
-                            </h1>
-                            <p className="hidden lg:flex">
-                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
-                            </p>
-                            <button className="btn hidden md:flex btn-success mr-2">GET STARTED NOW!</button>
-                            <button className="btn btn-sm text-green-500 bg-white">VIEW COURSE </button>
-                        </div>
-                    </div>
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide4" className="btn btn-circle">❮</a>
-                        <a href="#slide2" className="btn btn-circle">❯</a>
-                    </div>
-                </div>
-                <div id="slide2" className="carousel-item relative w-full">
-                    <img src={img1} className="w-full" />
-                    <div className="absolute flex  justify-center items-center h-full bg-gradient-to-r from-gray-500">
-                        <div className="text-white text-start space-y-7 md:pl-12 w-2/3">
-                            <h1 className="md:text-md font-bold">
-                                WELCOME TO ACADEMIA
-                            </h1>
-                            <h1 className="md:text-5xl text-2xl font-bold">
-                                Best Online Education Expertise
-                            </h1>
-                            <p className="hidden lg:flex">
-                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
-                            </p>
-                            <button className="btn btn-success mr-2">GET STARTED NOW!</button>
-                            <button className="btn bg-white">VIEW COURSE </button>
-                        </div>
-                    </div>
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide1" className="btn btn-circle">❮</a>
-                        <a href="#slide3" className="btn btn-circle">❯</a>
-                    </div>
-                </div>
-                <div id="slide3" className="carousel-item relative w-full">
-                    <img src={img3} className="w-full" />
-                    <div className="absolute flex  justify-center items-center h-full bg-gradient-to-r from-gray-500">
-                        <div className="text-white text-start space-y-7 md:pl-12 w-2/3">
-                            <h1 className="md:text-md font-bold">
-                                WELCOME TO ACADEMIA
-                            </h1>
-                            <h1 className="md:text-5xl text-2xl font-bold">
-                                Best Online Education Expertise
-                            </h1>
-                            <p className="hidden lg:flex">
-                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
-                            </p>
-                            <button className="btn btn-success mr-2">GET STARTED NOW!</button>
-                            <button className="btn bg-white">VIEW COURSE </button>
-                        </div>
-                    </div>
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide2" className="btn btn-circle">❮</a>
-                        <a href="#slide4" className="btn btn-circle">❯</a>
-                    </div>
-                </div>
-                <div id="slide4" className="carousel-item relative w-full">
-                    <img src={img4} className="w-full" />
-                    <div className="absolute flex  justify-center items-center h-full bg-gradient-to-r from-gray-500">
-                        <div className="text-white text-start space-y-7 md:pl-12 w-2/3">
-                            <h1 className="md:text-md font-bold">
-                                WELCOME TO ACADEMIA
-                            </h1>
-                            <h1 className="md:text-5xl text-2xl font-bold">
-                                Best Online Education Expertise
-                            </h1>
-                            <p className="hidden lg:flex">
-                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
-                            </p>
-                            <button className="btn btn-success mr-2">GET STARTED NOW!</button>
-                            <button className="btn bg-white">VIEW COURSE </button>
-                        </div>
-                    </div>
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide3" className="btn btn-circle">❮</a>
-                        <a href="#slide1" className="btn btn-circle">❯</a>
+  <section className="">
+          <div className="hero bg-gradient-to-r to-[#1C7455] from-[#0B2A20]">
+            <div className="hero-content flex-col lg:flex-row-reverse">
+                <img data-aos="zoom-in" className="lg:w-4/12 hidden lg:flex" src="https://i.ibb.co/fvQtNxX/Untitled-design-2.png" />
+                <div className="text-white md:w-6/12 font my-5">
+                    <h4 className="text-[19px]">#1 Platform for Online Learning</h4>
+                    <h1 className="md:text-[45px] text-[28px] font-bold">Enroll & <span className="text-error">grow up</span> your <br /> skills today!
+                    </h1>
+                    <p className="text-[12px] md:text-sm">Explore new skills beyond the world of knowledge and get lost in freedom of creativity.</p>
+                    <div className="flex flex-row mt-4">
+                        <span className="start cursor-pointer mr-3">Start Learning</span>
+                        <span className="get border-2 cursor-pointer border-[#25ab7c]">Get Started</span>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
+  </section>
     );
 };
 

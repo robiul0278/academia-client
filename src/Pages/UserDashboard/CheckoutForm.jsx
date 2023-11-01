@@ -97,6 +97,7 @@ const CheckoutForm = ({ item ,price }) => {
                     courseName: item.courseName,
                     instructor: item.instructor,
                     image: item.image,
+                    // enrolled: setPoint(parseFloat)
             }
             console.log(payment);
             axiosSecure.post('/payments', payment)

@@ -1,33 +1,30 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
-import { BallTriangle } from "react-loader-spinner";
+import { RotatingLines } from "react-loader-spinner";
 
-const PrivateRoute = ({children}) => {
-    const {user,loading} = useAuth();
-    const location = useLocation();
+const PrivateRoute = ({ children }) => {
+  const { user, loading } = useAuth();
+  const location = useLocation();
 
-    if (loading) {
-        return (
-          <>
-            <BallTriangle
-              height={100}
-              width={100}
-              radius={5}
-              color="#4fa94d"
-              ariaLabel="ball-triangle-loading"
-              wrapperClass={{}}
-              wrapperStyle=""
-              visible={true}
-            />
-          </>
-        );
-      }
-      
+  if (loading) {
+    return (
+      <div className="flex items-center bg-white justify-center py-32">
+        <RotatingLines
+          strokeColor="grey"
+          strokeWidth="5"
+          animationDuration="0.75"
+          width="96"
+          visible={true}
+        />
+      </div>
+    );
+  }
 
-    if(user?.email) {
-        return children;
-    }
-    return <Navigate to="/login" state={{ from: location }} replace />;
+
+  if (user?.email) {
+    return children;
+  }
+  return <Navigate to="/login" state={{ from: location }} replace />;
 };
 
 export default PrivateRoute;

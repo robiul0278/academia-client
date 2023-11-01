@@ -6,15 +6,15 @@ import { Fade } from 'react-awesome-reveal';
 
 const Achievements = () => {
     return (
-        <div className='md:py-16 p-2 md:px-16'>
+        <section  className='bg-white p-5 my-5'>
             <div className="text-center">
                 <Fade>
-                    <h1 className="md:text-5xl text-2xl font-semibold mb-3">Our Achievements</h1>
+                    <h1 className="md:text-3xl text-2xl font-semibold mb-1">Our Achievements</h1>
                     <h4 className="md:px-48 text-xs md:text-sm font-semibold">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which enjoy with my whole heart. I am alone, and feel the charm of existence in this spot,which wascreated for the bliss of souls like mine.</h4>
                 </Fade>
             </div>
-            <div className='grid md:grid-cols-3 grid-cols-1 gap-10 mt-10'>
-                <div className='flex items-center shadow-sm bg-white p-5'>
+            <div className='grid md:grid-cols-3 md:gap-10 mt-10'>
+                <div className='flex items-center shadow-md bg-slate-50 p-5'>
                     <img className='w-28 p-5' src={icon1} alt="" />
                     <div className=" leading-loose">
                         <CountUp
@@ -31,7 +31,7 @@ const Achievements = () => {
                         <p className="text-md font-bold text-stone-400">CERTIFICATIONS</p>
                     </div>
                 </div>
-                <div className='flex items-center shadow-sm  bg-white p-5'>
+                <div className='flex items-center shadow-md  bg-slate-50 p-5'>
                     <img className='w-28 p-5' src={icon3} alt="" />
                     <div className="leading-loose">
                         <CountUp
@@ -48,7 +48,7 @@ const Achievements = () => {
                         <p className="text-md font-bold text-stone-400">AWARDS</p>
                     </div>
                 </div>
-                <div className='flex items-center shadow-sm  bg-white p-5'>
+                <div className='flex items-center shadow-md  bg-slate-50 p-5'>
                     <img className='w-28 p-5' src={icon2} alt="" />
                     <div className=" leading-loose">
                         <CountUp
@@ -67,7 +67,7 @@ const Achievements = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
