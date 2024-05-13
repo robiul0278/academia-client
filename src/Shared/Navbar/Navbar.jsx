@@ -10,7 +10,7 @@ const Navbar = () => {
   const { user, logOut } = useAuth();
   const [role, setRole] = useState([]);
 
-  console.log(role)
+  // console.log(role)
 
   const handleLogOut = () => {
     logOut()
