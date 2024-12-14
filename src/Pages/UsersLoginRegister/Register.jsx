@@ -97,7 +97,7 @@ const Register = () => {
                              })}  
                             />
                             {errors.confirmPassword && (<span className='text-red-500'>Both password must match!</span>)}
-                        <input  {...register("photoURL", { required: true })} type="password" placeholder="Enter Photo URL"
+                        <input  {...register("photoURL", { required: true })} type="url" placeholder="Enter Photo URL"
                             className="px-4 py-3 bg-[#f0f1f2] focus:bg-transparent w-full text-sm border outline-[#007bff] rounded transition-all" />
                             {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
                             <h4 className="text-yellow-400">{error}</h4>
