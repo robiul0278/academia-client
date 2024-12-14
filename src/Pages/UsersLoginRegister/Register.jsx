@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -8,7 +9,7 @@ import { Helmet } from "react-helmet";
 
 const Register = () => {
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset,watch, formState: { errors } } = useForm();
     const { createUser, updateUserProfile, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
     const [error, setError] = useState("");
@@ -71,74 +72,53 @@ const Register = () => {
             <Helmet>
                 <title>ACADEMIA | Sign Up</title>
             </Helmet>
-            <div className="hero min-h-screen py-32 bg-base-200">
-                <div className="hero-content">
-                    <div className="card flex-shrink-0 w-full border bg-base-100">
-                        <form onSubmit={handleSubmit(onSubmit)} className="card-body w-full">
-                        <div className="text-center">
-                                <h1 className="text-5xl font-semibold">Please Register !</h1>
-                            </div>
-                            <div className="flex">
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Name</span>
-                                    </label>
-                                    <input type="text"  {...register("name", { required: true })} name="name" placeholder="Name" className="input input-bordered w-full" />
-                                    {errors.name && <span className="text-red-600">Name is required</span>}
-                                </div>
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Email</span>
-                                    </label>
-                                    <input type="email"  {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered w-full ml-4" />
-                                    {errors.email && <span className="text-red-600">Email is required</span>}
-                                </div>
-                            </div>
-                            <div className="flex">
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Password</span>
-                                    </label>
-                                    <input type="password"  {...register("password", {
-                                        required: true,
-                                        minLength: 6,
-                                        pattern: /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-])/
-                                    })} placeholder="password" className="input input-bordered w-full" />
-                                    {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
-                                    {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
-                                    {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case and one special character.</p>}
-                                </div>
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Confirm Password</span>
-                                    </label>
-                                    <input type="password"  {...register("confirmPassword", {
-                                        required: true,
-                                        minLength: 6,
-                                        pattern: /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-])/
-                                    })} placeholder="confirm password" className="input input-bordered w-full ml-4" />
-                                    {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
-                                    {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
-                                    {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case and one special character.</p>}
-                                </div>
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Photo URL</span>
-                                </label>
-                                <input type="text"  {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered" />
-                                {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
-                                <h4 className="text-yellow-400">{error}</h4>
+            <div className="container mx-auto px-5">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 font-[sans-serif] text-[#333] max-w-md mx-auto">
+                        <input {...register("name", { required: true })} type="name" placeholder="Enter Name"
+                            className="px-4 py-3 bg-[#f0f1f2] focus:bg-transparent w-full text-sm border outline-[#007bff] rounded transition-all" />
+                             {errors.name && <span className="text-red-600">Name is required</span>}
+                        <input {...register("email", { required: true })} type="email" placeholder="Enter Email"
+                            className="px-4 py-3 bg-[#f0f1f2] focus:bg-transparent w-full text-sm border outline-[#007bff] rounded transition-all" />
+                            {errors.email && <span className="text-red-600">Email is required</span>}
 
-                            </div>
-                            <div className="form-control">
-                                <input className="btn btn-primary" type="submit" value="Sign Up" />
-                            </div>
-                        </form>
-                        <p className="text-center">Already have an account ? <span className="text-blue-600"><Link to="/login">Login</Link></span> </p>
-                        <SocialLogin></SocialLogin>
+                        <input {...register("password", {required: true,minLength: 6})} type="password" placeholder="Enter Password"
+                            className="px-4 py-3 bg-[#f0f1f2] focus:bg-transparent w-full text-sm border outline-[#007bff] rounded transition-all" />
+                             {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
+                            {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
+                        <input  type="password" placeholder="Enter Confirm Password"
+                            className="px-4 py-3 bg-[#f0f1f2] focus:bg-transparent w-full text-sm border outline-[#007bff] rounded transition-all" 
+                            {...register("confirmPassword", {
+                                required: true,
+                                validate: (value) => {
+                                    if (watch('password') != value) {
+                                        return 'Passwords do not match';
+                                    }
+                                }
+                             })}  
+                            />
+                            {errors.confirmPassword && (<span className='text-red-500'>Both password must match!</span>)}
+                        <input  {...register("photoURL", { required: true })} type="password" placeholder="Enter Photo URL"
+                            className="px-4 py-3 bg-[#f0f1f2] focus:bg-transparent w-full text-sm border outline-[#007bff] rounded transition-all" />
+                            {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
+                            <h4 className="text-yellow-400">{error}</h4>
+                    <div className="flex items-center">
+                        <input type="checkbox" className="w-3 h-4 shrink-0" />
+                        <p className="text-sm ml-4">Remember me</p>
                     </div>
-                </div>
+
+                    <button type="submit"
+                        className="px-6 py-2.5 w-full !mt-8 text-sm bg-[#007bff] hover:bg-blue-600 text-white rounded active:bg-[#006bff]">Submit</button>
+                    <SocialLogin />
+                    <div className="text-center pt-3">
+                        <div>
+                            Already member ?&ensp;
+                            <Link to="/login" className=" text-blue-600">
+                                Please login.
+                            </Link>
+                        </div>
+                    </div>
+                </form>
+
             </div>
         </>
     );

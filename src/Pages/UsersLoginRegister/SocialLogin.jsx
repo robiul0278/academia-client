@@ -1,10 +1,11 @@
 import { useContext } from 'react';
-import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../providers/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { FcGoogle } from 'react-icons/fc';
+import { FaGithub } from 'react-icons/fa';
 const SocialLogin = () => {
-  const { googleSignIn ,updateUserProfile} = useContext(AuthContext);
+  const { googleSignIn ,updateUserProfile, gitHubSignIn} = useContext(AuthContext);
   const navigate = useNavigate()
   const location = useLocation();
 
@@ -41,15 +42,44 @@ const SocialLogin = () => {
         console.log(errorMessage)
       });
   }
+
+
+  
+
+  // GitHub Login ===========================
+
+  const handleGit = () => {
+    gitHubSignIn()
+      .then((result) => {
+        toast.success("Login successful!",{
+          position: "top-center",
+          theme: "light",
+          autoClose: 3000,
+        })
+        navigate(from, { replace: true })
+        const user = result.user;
+        console.log(user)
+      }).catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+  }
+
+
   return (
-    <div>
-      <div className="divider"></div>
-      <div className='w-full align-middle text-center'>
-        <button onClick={handleGooglePop} className="btn btn-circle border mb-4">
-          <FaGoogle />
+<div>
+<div>
+<div className="divider">OR</div>
+</div>
+    <div className="flex items-center justify-center gap-2">
+        <button onClick={handleGooglePop}
+        className="flex items-center justify-center px-6 py-2.5 w-full text-sm bg-[#007bff] hover:bg-blue-600 text-white rounded active:bg-[#006bff]" >
+        <FcGoogle />
         </button>
-      </div>
+        <button onClick={handleGit}
+        className="flex items-center justify-center px-6 py-2.5 w-full text-sm bg-[#007bff] hover:bg-blue-600 text-white rounded active:bg-[#006bff]"> <FaGithub/></button>
     </div>
+</div>
   );
 };
 

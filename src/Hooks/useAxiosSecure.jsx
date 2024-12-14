@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from './useAuth';
 
 const axiosSecure = axios.create({
-  baseURL: 'https://summer-camp-server-seven-pink.vercel.app/', 
+  baseURL: 'https://academiaserver-wnbcsxbj.b4a.run/', 
 });
 
 const useAxiosSecure = () => {
